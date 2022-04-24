@@ -1,0 +1,63 @@
+/*************************************************************************
+ * DEVS++: DEVS Open Source in C++                                       *
+ * Copyright (C) 2005-2007  Moon Ho Hwang <moonho.hwang@gmail.com>       *
+ *                                                                       *
+ * This library is free software; you can redistribute it and/or         *
+ * modify it under the terms of the GNU Lesser General Public            *
+ * License as published by the Free Software Foundation; either          *
+ * version 2.1 of the License, or (at your option) any later version.    *
+ *                                                                       *
+ * This library is distributed in the hope that it will be useful,       *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU      *
+ * Lesser General Public License for more details.                       *
+ *                                                                       *
+ * You should have received a copy of the GNU Lesser General Public      *
+ * License along with this library; if not, write to the Free Software   *
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, *
+ * USA.                                                                  *
+ *************************************************************************/
+
+#include <DEVSpp/ModelBase/SemiConMnfct/Fab/PDM.h>
+
+using namespace SF; 
+
+//-- 
+bool PDM::GetProcess(int pro_index, MV_Process& mvp) const
+{
+	if(pro_index > -1 && pro_index < (int) m_PS.size()){
+		mvp = m_PS[pro_index];
+		return true;
+	}else
+		return false;
+}
+
+bool PDM::GetMeanProcessTime(int pro_index, double& mpt) const
+{
+	if(pro_index > -1 && pro_index < (int) m_PS.size()){
+		mpt = m_PS[pro_index].mean_pt;
+		return true;
+	}else
+		return false;
+}
+
+bool PDM::GetRemaingProcesses(int pro_index, vector<MV_Process>& rp) const
+{
+	if(pro_index > -1 && pro_index <(int)m_PS.size()) {
+		for(int i=pro_index; i<(int)m_PS.size(); i++)
+			rp.push_back(m_PS[pro_index]);
+		return true;
+	}else
+		return false;
+}
+
+bool PDM::GetRemainingMeanProcessTime(int pro_index, double& rmpt) const
+{
+	if(pro_index > -1 && pro_index<(int)m_PS.size()){
+		rmpt = 0;
+		for(int i=pro_index; i<(int)m_PS.size(); i++)
+			rmpt += m_PS[pro_index].mean_pt;
+		return true;
+	}else
+		return false;
+}

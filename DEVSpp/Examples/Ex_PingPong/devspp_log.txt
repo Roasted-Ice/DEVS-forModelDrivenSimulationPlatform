@@ -1,0 +1,3 @@
+DEVS++: C++ Open Source of DEVS Implementation, (C) 2005~2009, http://odevspp.sourceforge.net
+The current date is 05/02/09 
+The current time is 02:10:06 

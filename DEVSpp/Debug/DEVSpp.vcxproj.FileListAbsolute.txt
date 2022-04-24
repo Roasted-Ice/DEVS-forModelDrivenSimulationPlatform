@@ -1,0 +1,2 @@
+D:\DEVSpp\Debug\DEVSpp.vcxprojAssemblyReference.cache
+D:\DEVSpp\Debug\DEVSpp.dll
